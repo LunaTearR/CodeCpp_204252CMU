@@ -17,7 +17,6 @@ public:
         size++;
         if (size == 1){
             head = new_poly;
-            curr = new_poly;
         }
         else {
             
