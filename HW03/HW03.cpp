@@ -20,10 +20,7 @@ public:
             curr = new_poly;
         }
         else {
-            while (exponent < curr -> exponent){
-                curr = curr -> next;
-            }
-            curr -> next = new_poly;
+            
         }
 
     }
