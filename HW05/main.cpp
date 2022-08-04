@@ -68,37 +68,3 @@ int main() {
     cin >> s;
   }
 }
-
-
-// bool isBalanced(string s) {
-//   int c1 = 0;
-//   int c2 = 0;
-//   int c3 = 0;
-//   for(int i = 0; i < s.length(); i++){
-//     if(s[i] == '(' ){
-//       c1 += 1;
-//     }
-//     else if(s[i] == '['){
-//       c2 += 1;
-//     }
-//     else if(s[i] == '{'){
-//       c3 += 1;
-//     }
-//     else if(s[i] == ')'){
-//       c1 -= 1;
-//     }
-//     else if(s[i] == ']'){
-//       c2 -= 1;
-//     }
-//     else if(s[i] == '}'){
-//       c3 -= 1;
-//     }
-//   }
-//   if(c1 == 0 && c2 == 0 && c3 ==0){
-//     return true;
-//   }
-//   else {
-//     return false;
-//   }
-// }
-
