@@ -16,7 +16,7 @@ public:
         new_poly -> exponent = exponent;
         size++;
         if (size == 1){
-            head = new_poly;
+            head -> next = new_poly;
         }
         else {
             
