@@ -10,11 +10,11 @@ int main()
     f1.addTerm(4,3);
     f1.addTerm(2,1);
     f1.printPolynomial();
-    // f2.addTerm(4,5);
-    // f2.addTerm(1,1);
-    // f2.addTerm(-5,0);
-    // f2.printPolynomial();
+    f2.addTerm(4,5);
+    f2.addTerm(1,1);
+    f2.addTerm(-5,0);
+    f2.printPolynomial();
     // f1.minus(f2);
     // f1.printPolynomial();
-    return 0;
+    // return 0;
 }
