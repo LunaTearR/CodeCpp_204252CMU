@@ -1,3 +1,2 @@
-# CodeCpp
-<!-- Cpp in CMU -->
-<!-- 204252 -->
+# CodeCpp in CMU
+# 204252
