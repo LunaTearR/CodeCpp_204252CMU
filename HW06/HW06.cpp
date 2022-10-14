@@ -60,38 +60,6 @@ class Scoreboard{
             //Show
             cout << T[i].ID << " " << T[i].PTS << " " << T[i].GD << endl;
         }
-        // void sort_score(){
-        //     int i,j,index_id,index_gd,index_pts;
-        //     for(i = 1; i < T.size();i++){
-        //         index_pts = T[i].PTS;
-        //         index_id = T[i].ID;
-        //         index_gd = T[i].GD;
-        //         j = i;
-        //         while((j > 0) && (T[j-1].PTS <= index_pts)){
-        //             if(T[j-1].PTS == T[j].PTS){
-        //                 if(T[j-1].GD < T[j].GD){
-        //                     T[j] = T[j-1];
-        //                     j = j-1;
-        //                 }
-        //                 //if gd and pts equel then pass
-        //                 else if(T[j-1].GD == T[j].GD){
-        //                     j = j-1;
-        //                 }
-        //                 else{
-        //                     break;
-        //                 }
-        //             }
-        //             else{
-        //                 T[j] = T[j-1];
-        //                 j = j-1;
-        //             }
-        //         }
-        //         T[j].PTS = index_pts;
-        //         T[j].ID = index_id;
-        //         T[j].GD = index_gd;
-        //     }
-
-        // }
         void update_table(){
             //bubble sort
             int i,j,temp_pts,temp_gd,temp_id;

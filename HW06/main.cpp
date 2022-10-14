@@ -3,8 +3,8 @@
 using namespace std;
 
 int main(){
-    int n =4;
-    // cin>>n;
+    int n;
+    cin>>n;
     Scoreboard S(n);
     S.showTeamAtRank(1);
     S.showTeamAtRank(2);
