@@ -10,12 +10,17 @@ int main() {
     tree.insert(11);
     tree.insert(10);
     tree.insert(8);
-    // tree.insert(9);
+    tree.insert(9);
     tree.insert(6);
     tree.remove(2);
-    cout << tree.get_depth(8) << endl;
+    // tree.remove(6);
     cout << tree.get_depth(2) << endl;
+    cout << tree.get_depth(1) << endl;
     cout << tree.get_depth(4) << endl;
+    cout << tree.get_depth(11) << endl;
+    cout << tree.get_depth(10) << endl;
+    cout << tree.get_depth(8) << endl;
+    cout << tree.get_depth(9) << endl;
     cout << tree.get_depth(6) << endl;
 
     return 0;
