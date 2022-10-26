@@ -13,7 +13,7 @@ int main() {
     tree.insert(9);
     tree.insert(6);
     tree.remove(2);
-    // tree.remove(6);
+    tree.remove(6);
     cout << tree.get_depth(2) << endl;
     cout << tree.get_depth(1) << endl;
     cout << tree.get_depth(4) << endl;

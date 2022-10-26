@@ -4,32 +4,31 @@ using namespace std;
 class BST {
 
 public:
-  BSTNode *root,*pre,*p,*prev,*temp;
+  BSTNode *root,*p,*prev,*temp;
   
   BST() {
-    root = NULL;
-    pre = NULL;
-    p = NULL;
-    prev = NULL;
-    temp = NULL;
+    root = nullptr;
+    p = nullptr;
+    prev = nullptr;
+    temp = nullptr;
   }
 
   void insert(int value) {
     BSTNode *new_node = new BSTNode();
-    new_node -> left = NULL;
-    new_node -> right = NULL;
+    new_node -> left = nullptr;
+    new_node -> right = nullptr;
     new_node -> value = value;
-    if(root == NULL){
+    if(root == nullptr){
       root = new_node;
-      root -> left = NULL;
-      root -> right = NULL;
+      root -> left = nullptr;
+      root -> right = nullptr;
     }
     if(search_value(root,value)){
       return ;
     }
     else {
       p = root;
-      while(p != NULL){
+      while(p != nullptr){
         prev = p;
         if(p -> value > new_node -> value){
           p = p -> left;
@@ -48,168 +47,16 @@ public:
   }
 
   void remove(int value) {
-    string previous;
-    // BSTNode *min = new BSTNode();
-    p = root;
-    prev = root;
-    //don't have node in tree
-    if (root == NULL){
-        return ;
-    }
-    //tree don't have value
-    if(!search_value(root,value)){
-      return ;
-    }
-    //remove child node
-    if(value != root -> value){
-      //find node for delete
-      while (p -> value != value){
-        prev = p;
-        if(value < p -> value){
-          p = p -> left;
-          previous = "left";
-        }
-        //value >= p -> value
-        else{
-          p = p -> right;
-          previous = "right";
-        }
-      }
-      //remove leaf node
-      if(p -> left == NULL && p -> right == NULL){
-        if(previous == "left"){
-          prev -> left = NULL;
-        }
-        //previous == "right"
-        else{
-          prev -> right = NULL;
-        }
-        free(p);
-      }
-      //remove node with 1 child
-      //node has right child
-      else if(p -> right != NULL && p -> left == NULL){
-        //child have no child
-        if (p -> right -> left == NULL && p -> right -> left == NULL){
-          if(previous == "left"){
-            prev -> left = p -> right;
-          }
-          //previous == "right"
-          else{
-            prev -> right = p ->right;
-          }
-          free(p);
-         }
-         //child have another child
-         else {
-          temp = find_min(p -> right);
-          if(temp -> left == NULL && temp -> right == NULL){
-            if(pre -> left == temp){
-              p -> value = temp -> value;
-              
-            }
-            else{
-
-            }
-          }
-         }
-        }
-      //node has left child
-      else if(p -> left != NULL && p -> right == NULL){
-        if(previous == "left"){
-          p = prev -> left;
-          prev -> left = p -> left;
-        }
-        //previous == "right"
-        else{
-          p = prev -> right;
-          prev -> right = p -> left;
-        }
-        free(p);
-      }
-      //remove node with 2 child
-      else{
-        if(p->right->left != NULL){
-          if (prev -> left -> value = value){
-            p = prev -> left;
-          }
-          else{
-            p = prev -> right;
-          }
-          temp = p -> right;
-          p -> value = temp -> value;
-          p -> right = temp -> left;
-          free(temp);
-        }
-        else if(p -> right -> right == NULL){
-          if (prev -> left -> value = value){
-            p = prev -> left;
-          }
-          else{
-            p = prev -> right;
-          }
-          temp = p -> right;
-          p -> value = temp -> value;
-          p -> right = temp -> right;
-          free(temp);
-        }
-        else{
-          if (prev -> left -> value = value){
-              p = prev -> left;
-          }
-          else{
-              p = prev -> right;
-          }
-          temp = find_min(p ->right);
-          p -> value = temp -> value;
-          pre -> left = NULL;
-          free(temp);        
-        }
-      }
-    }
-    //remove root node
-    else{
-      p = root;
-      //root no child
-      if(root -> left == NULL && root -> right == NULL){
-        delete root;
-        root = NULL;
-
-        return ;
-      }
-      else if (root -> right == NULL && root -> left != NULL){
-        temp = find_max(root -> left);
-        root -> value = temp -> value;
-        free(temp);
-
-      }
-
-      else if(root -> right != NULL){
-        temp = root -> right;
-        while(temp != NULL && temp->left != NULL)
-          pre = temp;
-          temp = temp->left;
-        root -> value = temp -> value;
-        pre -> left = NULL;
-        free(temp);      
-      }
-    }
+    remove_element(root, root, value);
   }
 
-  BSTNode* find_min(BSTNode* node){
-    BSTNode *min = new BSTNode();
-    min = node;
-    while(min != NULL && min->left != NULL)
-      pre = min;
+  BSTNode *find_min(BSTNode *min){
+    while(min != nullptr && min->left != nullptr)
       min = min->left;
     return min;
   }
-
-  BSTNode* find_max(BSTNode* node){
-  BSTNode *max = new BSTNode();
-  max = node;
-  while(max != NULL && max->right != NULL)
-    pre = max;
+  BSTNode* find_max(BSTNode* max){
+  while(max != nullptr && max->right != nullptr)
     max = max -> right;
   return max;
 }
@@ -239,7 +86,7 @@ public:
   bool search_value(BSTNode *node, int key) {
    BSTNode *temps = new BSTNode();
    temps = node;
-   while(temps != NULL) {
+   while(temps != nullptr) {
       if(temps -> value == key) {
          return true;
       } 
@@ -251,5 +98,75 @@ public:
       }
    }
    return false;
+  }
+
+
+
+  void remove_element(BSTNode *a, BSTNode *before, int value) {
+    if (a != nullptr) {
+      if (value < a -> value) {
+        before = a;
+        remove_element(a->left, before, value);
+      } 
+      else if (value > a->value) {
+        before = a;
+        remove_element(a->right, before, value);
+      } 
+      else {
+        if (a->left == nullptr && a->right == nullptr) {
+          // cout << "Both empty"
+          //<< "\n";
+          if (before->value == a->value) {
+            root = nullptr;
+      
+          } 
+          else if (before->left->value == a->value){
+            before->left = nullptr;
+          } 
+          else {
+            before->right = nullptr;
+          }
+        } 
+        else if (a->left == nullptr) {
+          // cout << "child on right";
+          if (before->value == a->value) {
+            root = a->right;
+          } 
+          else if (before->left->value == a->value) {
+            before->left = a->right;
+          } 
+          else {
+            before->right = a->right;
+          }
+        } 
+        else if (a->right == nullptr) {
+          if (before->value == a->value) {
+            root = a->left;
+          } 
+          else if (before->left->value == a->value) {
+            before->left = a->left;
+          } 
+          else {
+            before->right = a->left;
+          }
+        } 
+        else {
+          // cout << "Both child"<<"\n";
+          BSTNode *Curr = new BSTNode;
+          Curr = find_min(a->right);
+          int num = Curr->value;
+          remove_element(root, root, Curr->value);
+          if (before->value == a->value) {
+            before->value = num;
+          } 
+          else if (before->left->value == a->value) {
+            before->left->value = num;
+          } 
+          else {
+            before->right->value = num;
+          }
+        }
+      }
+    }
   }
 };
